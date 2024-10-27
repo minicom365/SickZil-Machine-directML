@@ -5,7 +5,7 @@ import utils.futils as fu
 config = {}
 def load_config(config_fpath = '../resource/config.json'):
     global config
-    with open(config_fpath) as f:
+    with open(config_fpath, encoding='utf-8') as f:
         config = json.load(f)
 
 ###### DO NOT CHANGE BELOW! ######
