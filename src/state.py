@@ -1,10 +1,12 @@
 #TODO: save mask & image in `png` format!
 #      and warn it to user: converted to png..
 #      (After conversion, all jpgs are deleted)
+import os
 from pathlib import Path
 from collections import namedtuple
 import shutil
 
+import filetype
 import consts
 import utils.fp as fp
 import utils.imutils as iu
@@ -74,10 +76,11 @@ def set_project(prj_dirpath):
 
     img_paths = fp.go(
         Path(prj_dirpath) / consts.IMGDIR,
-        fu.children, 
-        fp.filter(iu.is_img_file),
-        fu.human_sorted, 
-        fp.map(lambda pstr: pstr.replace('\\','/')),
+        fu.children,
+        fp.filter(os.path.isfile),
+        fp.filter(filetype.is_image),
+        fu.human_sorted,
+        fp.map(lambda pstr: pstr.replace('\\', '/')),
         tuple
     )
     mask_paths = tuple(fp.map(
