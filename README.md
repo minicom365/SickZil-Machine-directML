@@ -1,4 +1,4 @@
-SickZil-Machine
+SickZil-Machine with DirectML support!!
 ===============
 <sup>English | [한국어](README.ko_kr.md)</sup>
 
