@@ -25,16 +25,16 @@ CNETPATH = '../resource/cnet/cnet-0.1.0.pb'
 #TODO: it.. has.. some... smell...
 def model_name(mpath, version):
     return {
-        '0.1.0': 'snet' if mpath == SNETPATH else ''
+        '0.1.0': 'snet' if "/snet/" in mpath else ''
     }[version]
 
 def snet_in(version, sess):
     return {
-        '0.1.0': sess.graph.get_tensor_by_name('snet/input_1:0')
+        '0.1.0': sess.graph.get_tensor_by_name('input_1:0')
     }[version]
 def snet_out(version, sess):
     return {
-        '0.1.0': sess.graph.get_tensor_by_name('snet/conv2d_19/truediv:0')
+        '0.1.0': sess.graph.get_tensor_by_name('conv2d_19/truediv:0')
     }[version]
 
 def cnet_in(version, sess):
